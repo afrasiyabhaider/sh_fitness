@@ -9,7 +9,9 @@
     </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
+    <!-- Bootstrap -->
+    {{-- <link href="{{mix('./css/app.css')}}" type="text/css" rel="stylesheet"/> --}}
+
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('dashboard/fontawesome/css/all.min.css')}}">
@@ -22,10 +24,10 @@
     <link rel="stylesheet" href="{{asset('dashboard/date_picker/DateTimePicker.min.css')}}">
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('dashboard/dist/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{asset('dashboard/dist/css/adminlte.css')}}">
 
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{asset('dashboard/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('dashboard/overlayScrollbars/css/OverlayScrollbars.min.css')}}"> --}}
 
     <link rel="stylesheet" href="{{asset('dashboard/css/custom.css')}}">
 </head>
@@ -48,25 +50,24 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <p>
-                            <i class="fa fa-user-circle fa-2x"></i>
-                            {{-- <img src="{{asset('uploads/'.Auth::User()->image)}}" alt="#" width="40px" height="40px" class="rounded-circle"> --}}
+                            {{-- <i class="fa fa-user-circle fa-2x"></i> --}}
+                            <img src="{{asset('uploads/'.Auth::User()->image)}}" alt="#" width="40px" height="40px" class="rounded-circle">
                             <span >
-                                {{-- {{
+                                {{
                                     Auth::user()->name
-                                }} --}}
-                                Name
+                                }}
                             </span>
                             <i class="fa fa-chevron-circle-down"></i>
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                        {{-- <span class="dropdown-item dropdown-header">Profile</span> --}}
+                        <span class="dropdown-item dropdown-header">Profile</span>
                         <a href="{{url('profile')}}" class="dropdown-item text-dark">
                             <i class="fa fa-user-circle"> </i>
                             Profile
                         </a>
                         <div class="dropdown-divider"></div>
-                        {{-- <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                             <i class="fa fa-sign-out-alt mr-2"></i> Logout
@@ -74,7 +75,7 @@
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                        </form> --}}
+                        </form>
                     </div>
                 </li>
             </ul>
@@ -93,18 +94,17 @@
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar sidebar-bg-blue">
+            <div class="sidebar sidebar-bg-blue mb-3">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center">
                     <div class="image text-center">
-                        <i class="fa fa-user-circle fa-6x text-blue"></i>
-                        {{-- <img src="{{asset('uploads/'.Auth::user()->image)}}" alt="AdminLTE Logo" class="img-circle elevation-3" style="opacity: .8;width:100px"> --}}
+                        {{-- <i class="fa fa-user-circle fa-6x text-blue"></i> --}}
+                        <img src="{{asset('uploads/'.Auth::user()->image)}}" alt="User Image" class="img-circle elevation-3" style="opacity:.8;width:100px">
                         <br>
                         <a href="#" class="d-block">
-                            {{-- {{
+                            {{
                                 Auth::user()->name
-                            }} --}}
-                            Name Here
+                            }}
                         </a>
                     </div>
                 </div>
@@ -122,9 +122,83 @@
                                 </p>
                             </a>
                         </li>
+                        {{-- @if(Auth::user()->hasAnyPermission(['Register Portal User','View Portal User','Update Portal User','Disable Portal User'])) --}}
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user-tie"></i>
+                                <p>
+                                    Portal Users
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview ml-3">
+                                {{-- @if (Auth::user()->hasPermissionTo('Register Portal User')) --}}
+                                    <li class="nav-item">
+                                        <a href="{{url('portal/user/create')}}" class="nav-link">
+                                            <i class="fa fa-user-plus nav-icon"></i>
+                                            <p>Register New User</p>
+                                        </a>
+                                    </li>
+                                {{-- @endif
+                                @if (Auth::user()->hasAnyPermission(['View Portal User','Update Portal User','Disable Portal User'])) --}}
+                                    <li class="nav-item">
+                                        <a href="{{url('portal/user/')}}" class="nav-link">
+                                            <i class="fa fa-list-ul nav-icon"></i>
+                                            <p>Users Detail</p>
+                                        </a>
+                                    </li>
+                                {{-- @endif --}}
+                            </ul>
+                        </li>
+                        {{-- @endif
+                        @if (Auth::user()->hasAnyPermission(['Register Role','View Role','Edit Role','Delete Role','Assign Role','View Assigned Roles','Revoke Role','Delete Role Permission','View Role Permissions','Revoke Permission'])) --}}
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-cogs"></i>
+                                    <p>
+                                        Permission System
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview ml-3">
+                                        {{-- @if (Auth::user()->hasPermissionTo('Register Role')) --}}
+                                        <li class="nav-item">
+                                            <a href="{{url('role/create')}}" class="nav-link">
+                                                <i class="fa fa-plus nav-icon"></i>
+                                                <p>Register New Role</p>
+                                            </a>
+                                        </li>
+                                    {{-- @endif
+                                    @if (Auth::user()->hasAnyPermission(['View Role','Edit Role','Delete Role','Delete Role Permission','View Role Permissions','Revoke Permission'])) --}}
+                                        <li class="nav-item">
+                                            <a href="{{url('role/')}}" class="nav-link">
+                                                <i class="fa fa-list-ul nav-icon"></i>
+                                                <p>View Roles</p>
+                                            </a>
+                                        </li>
+                                    {{-- @endif
+                                    @if (Auth::user()->hasPermissionTo('Assign Role')) --}}
+                                        <li class="nav-item">
+                                            <a href="{{url('user/roles/create')}}" class="nav-link">
+                                                <i class="fa fa-user-cog nav-icon"></i>
+                                                <p>Assign Role to User</p>
+                                            </a>
+                                        </li>    
+                                    {{-- @endif
+                                    @if (Auth::user()->hasAnyPermission(['View Assigned Roles','Revoke Role'])) --}}
+                                        <li class="nav-item">
+                                            <a href="{{url('user/roles')}}" class="nav-link">
+                                                <i class="fa fa-user-tag nav-icon"></i>
+                                                <p>View Assigned Roles</p>
+                                            </a>
+                                        </li>
+                                    {{-- @endif --}}
+                                </ul>
+                            </li>  
+                        {{-- @endif --}}
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-boxes"></i>
                                 <p>
                                     Products
                                     <i class="fas fa-angle-left right"></i>
@@ -132,9 +206,38 @@
                             </a>
                             <ul class="nav nav-treeview ml-3">
                                 <li class="nav-item">
-                                    <a href="{{url('portal/user/create')}}" class="nav-link">
-                                        <i class="fa fa-user-plus nav-icon"></i>
-                                        <p>Add New Product</p>
+                                    <a href="{{url('sizes')}}" class="nav-link">
+                                        <i class="fa fa-pencil-ruler nav-icon"></i>
+                                        <p>Sizes</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('flavours')}}" class="nav-link">
+                                        <i class="fa fa-apple-alt nav-icon"></i>
+                                        <p>Flavours</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-trash-alt"></i>
+                                <p>
+                                    Trash Bin
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview ml-3">
+                                <li class="nav-item">
+                                    <a href="{{url('sizes/trash')}}" class="nav-link">
+                                        <i class="fa fa-pencil-ruler nav-icon"></i>
+                                        <p>Sizes</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('flavours/trash')}}" class="nav-link">
+                                        <i class="fa fa-apple-alt nav-icon"></i>
+                                        <p>Flavours</p>
                                     </a>
                                 </li>
                             </ul>
@@ -187,16 +290,15 @@
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <span>
-                &copy; {{now()->year}} SH Fitness | Developed by <a href="https://www.linkedin.com/in/afrasiyab-haider-8bab20135/" target="__blank" class="text-success">Afrasiyab Haider</a>
+                &copy; {{now()->year}} {{config('app.name','SH-Nutrition')}}| Developed by <a href="https://www.linkedin.com/in/afrasiyab-haider-8bab20135/" target="__blank" class="text-success">Afrasiyab Haider</a>
             </span>
         </footer>
     </div>
     <!-- ./wrapper -->
-
     <!-- jQuery -->
     <script src="{{asset('dashboard/jquery/jquery.min.js')}}"></script>
 
-     {{-- @include('sweetalert::alert') --}}
+     @include('sweetalert::alert')
 
     <script src="{{asset('dashboard/fontawesome/js/all.min.js')}}"></script>
 
@@ -210,8 +312,11 @@
     <script src="{{asset('dashboard/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('dashboard/dist/js/adminlte.js')}}"></script>
+
     <script src="{{asset('dashboard/js/imoViewer.js')}}"></script>
     
+    @stack('scripts')
+
     <script src="{{asset('dashboard/js/scripts.js')}}"></script>
 </body>
 

@@ -118,5 +118,6 @@ return [
         'header'  => [],
         'options' => 0,
     ],
+    'script_template' => 'datatables::script',
 
 ];

@@ -41,6 +41,14 @@ html {
 
 /*---------------------------------------------*/
 
+.text-blue {
+    color: #16abe6 !important;
+}
+
+.bg-dark-blue {
+    background-color: #16abe6 !important;
+}
+
 a {
     font-size: 14px;
     line-height: 1.7;
@@ -242,7 +250,7 @@ iframe {
     flex-wrap: wrap;
     justify-content: space-between;
     /* padding: 120px 130px 33px 95px; */
-    padding: 70px 130px 33px 50px;
+    padding: 90px 130px 90px 50px;
 }
 
 
