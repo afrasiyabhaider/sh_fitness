@@ -38,7 +38,7 @@ class PermissionSystemController extends Controller
     public function permissions_create()
     {
         $permission = Permission::create([
-            'name' => 'Enable Profession'
+            'name' => 'Permanent Delete Size'
         ]);
 
         return $permission->name;

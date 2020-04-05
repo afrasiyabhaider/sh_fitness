@@ -8,7 +8,7 @@
             Register Role
             <i class="fa fa-check-double"></i>
         </h1>
-        @if (Auth::user()->hasPermissionTo('View Role'))
+        @if (Auth::user()->hasPermissionTo('View Roles'))
                 <a href="{{url('role/')}}" class="btn bg-dark-blue text-light">
                     View Registered Roles
                     <i class="fa fa-clipboard-list"></i>

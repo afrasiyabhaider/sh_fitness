@@ -166,7 +166,6 @@ return [
          * Package Service Providers...
          */
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
-        Yajra\DataTables\DataTablesServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
 
         /*
@@ -234,7 +233,6 @@ return [
          * 
         */
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];

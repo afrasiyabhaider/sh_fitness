@@ -29,8 +29,11 @@ $(function() {
             extend: "collection",
             text: "<i class='fa fa-file-export'></i> Export",
             className: "mb-2",
-            buttons: ["excel", "csv"]
-        }]
+            buttons: ["excel", "csv"],
+        }, ],
+        initComplete: function(settings, json) {
+            $("#data_table").wrap('<div class="table-responsive"></div>');
+        },
     });
 
     /**

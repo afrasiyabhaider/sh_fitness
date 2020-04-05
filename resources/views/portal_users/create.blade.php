@@ -40,7 +40,7 @@
                <div class="form-row">
                     <div class="col-12">
                          <div class="col-sm-6">
-                              <img src="{{asset('dashboard/images/image_upload.png')}}" id="img-previewer" alt="" width="150px" height="250px" class="img-thumbnail">
+                              <img src="{{asset('public/dashboard/images/image_upload.png')}}" id="img-previewer" alt="" width="150px" height="250px" class="img-thumbnail">
                          </div>
                          <div class="custom-file col-md-3 col-sm-6 col-12 mt-3">
                               <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="img-input" name="image">

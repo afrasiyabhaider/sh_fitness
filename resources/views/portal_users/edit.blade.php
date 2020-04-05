@@ -41,7 +41,7 @@
                <div class="form-row">
                     <div class="col-12">
                          <div class="col-6">
-                              <img src="{{asset('uploads/'.$user->image)}}" id="img-previewer" alt="" width="150px" height="250px" class="img-thumbnail">
+                              <img src="{{asset('public/uploads/'.$user->image)}}" id="img-previewer" alt="" width="150px" height="250px" class="img-thumbnail">
                          </div>
                          <div class="custom-file col-md-3 col-12 mt-3">
                               <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="img-input" name="image">

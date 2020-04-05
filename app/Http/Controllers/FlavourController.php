@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Flavour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\DataTables;
 
 class FlavourController extends Controller
 {
@@ -17,12 +16,12 @@ class FlavourController extends Controller
      *  Return data of Flavours for Laravel Datatables
      * 
      */
-    public function get_dataTable()
-    {
-        $flavour = Flavour::query();
-        return DataTables::of($flavour)->make(true);
-        // ->toJson();
-    }
+    // public function get_dataTable()
+    // {
+    //     $flavour = Flavour::query();
+    //     return DataTables::of($flavour)->addIndexColumn()->make(true);
+    //     // ->toJson();
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -30,9 +29,9 @@ class FlavourController extends Controller
      */
     public function index()
     {
-        // $flavours = Flavour::latest()->get();
-        // , compact('flavours')
-        return view('flavours.index');
+        $flavours = Flavour::latest()->get();
+       
+        return view('flavours.index', compact('flavours'));
     }
 
     /**

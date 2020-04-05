@@ -14,22 +14,22 @@
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('dashboard/fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/dashboard/fontawesome/css/all.min.css')}}">
     
     {{-- Jquery Datatables --}}
-    <link rel="stylesheet" href="{{asset('dashboard/datatables/css/complete.datatables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/dashboard/datatables/css/complete.datatables.min.css')}}">
 
-    <link rel="stylesheet" href="{{asset('dashboard/select2/css/select2.css')}}">
+    <link rel="stylesheet" href="{{asset('public/dashboard/select2/css/select2.css')}}">
 
-    <link rel="stylesheet" href="{{asset('dashboard/date_picker/DateTimePicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/dashboard/date_picker/DateTimePicker.min.css')}}">
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('dashboard/dist/css/adminlte.css')}}">
+    <link rel="stylesheet" href="{{asset('public/dashboard/dist/css/adminlte.css')}}">
 
     <!-- overlayScrollbars -->
-    {{-- <link rel="stylesheet" href="{{asset('dashboard/overlayScrollbars/css/OverlayScrollbars.min.css')}}"> --}}
+    {{-- <link rel="stylesheet" href="{{asset('public/dashboard/overlayScrollbars/css/OverlayScrollbars.min.css')}}"> --}}
 
-    <link rel="stylesheet" href="{{asset('dashboard/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('public/dashboard/css/custom.css')}}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -51,7 +51,7 @@
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <p>
                             {{-- <i class="fa fa-user-circle fa-2x"></i> --}}
-                            <img src="{{asset('uploads/'.Auth::User()->image)}}" alt="#" width="40px" height="40px" class="rounded-circle">
+                            <img src="{{asset('public/uploads/'.Auth::User()->image)}}" alt="#" width="40px" height="40px" class="rounded-circle">
                             <span >
                                 {{
                                     Auth::user()->name
@@ -99,7 +99,7 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex justify-content-center">
                     <div class="image text-center">
                         {{-- <i class="fa fa-user-circle fa-6x text-blue"></i> --}}
-                        <img src="{{asset('uploads/'.Auth::user()->image)}}" alt="User Image" class="img-circle elevation-3" style="opacity:.8;width:100px">
+                        <img src="{{asset('public/uploads/'.Auth::user()->image)}}" alt="User Image" class="img-circle elevation-3" style="opacity:.8;width:100px">
                         <br>
                         <a href="#" class="d-block">
                             {{
@@ -111,7 +111,7 @@
                 
 
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
+                <nav class="mt-2 mb-5">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon classwith font-awesome or any other icon font library -->
                         <li class="nav-item">
@@ -217,6 +217,12 @@
                                         <p>Flavours</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{url('category')}}" class="nav-link">
+                                        <i class="fa fa-tags nav-icon"></i>
+                                        <p>Category</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
@@ -229,6 +235,12 @@
                             </a>
                             <ul class="nav nav-treeview ml-3">
                                 <li class="nav-item">
+                                    <a href="{{url('portal_user/trash')}}" class="nav-link">
+                                        <i class="fa fa-users nav-icon"></i>
+                                        <p>Portal User</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{url('sizes/trash')}}" class="nav-link">
                                         <i class="fa fa-pencil-ruler nav-icon"></i>
                                         <p>Sizes</p>
@@ -238,6 +250,12 @@
                                     <a href="{{url('flavours/trash')}}" class="nav-link">
                                         <i class="fa fa-apple-alt nav-icon"></i>
                                         <p>Flavours</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('category/trash')}}" class="nav-link">
+                                        <i class="fa fa-tags nav-icon"></i>
+                                        <p>Category</p>
                                     </a>
                                 </li>
                             </ul>
@@ -296,28 +314,28 @@
     </div>
     <!-- ./wrapper -->
     <!-- jQuery -->
-    <script src="{{asset('dashboard/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('public/dashboard/jquery/jquery.min.js')}}"></script>
 
      @include('sweetalert::alert')
 
-    <script src="{{asset('dashboard/fontawesome/js/all.min.js')}}"></script>
+    <script src="{{asset('public/dashboard/fontawesome/js/all.min.js')}}"></script>
 
     {{-- Jquery Data Tables --}}
-    <script src="{{asset('dashboard/datatables/js/complete.datatables.min.js')}}"></script>
+    <script src="{{asset('public/dashboard/datatables/js/complete.datatables.min.js')}}"></script>
 
-    <script src="{{asset('dashboard/select2/js/select2.min.js')}}"></script>
+    <script src="{{asset('public/dashboard/select2/js/select2.min.js')}}"></script>
 
-    <script src="{{asset('dashboard/date_picker/DateTimePicker.min.js')}}"></script>
+    <script src="{{asset('public/dashboard/date_picker/DateTimePicker.min.js')}}"></script>
 
-    <script src="{{asset('dashboard/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('public/dashboard/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- AdminLTE App -->
-    <script src="{{asset('dashboard/dist/js/adminlte.js')}}"></script>
+    <script src="{{asset('public/dashboard/dist/js/adminlte.js')}}"></script>
 
-    <script src="{{asset('dashboard/js/imoViewer.js')}}"></script>
+    <script src="{{asset('public/dashboard/js/imoViewer.js')}}"></script>
     
     @stack('scripts')
 
-    <script src="{{asset('dashboard/js/scripts.js')}}"></script>
+    <script src="{{asset('public/dashboard/js/scripts.js')}}"></script>
 </body>
 
 </html>

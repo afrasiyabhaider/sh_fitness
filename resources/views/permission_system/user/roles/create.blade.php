@@ -85,7 +85,7 @@
                                         $x=1;
                                     @endphp
                                     @foreach ($data['roles'] as $item)
-                                        @if (($item->name != "Admin") && ($item->name != "Admin") )
+                                        @if (($item->name != "Super Admin") && ($item->name != "Admin") )
                                             <option value="{{$item->id}}">
                                                 {{$x++}}.
                                                 {{$item->name}}

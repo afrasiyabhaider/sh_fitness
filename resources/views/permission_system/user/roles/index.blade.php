@@ -51,7 +51,7 @@
                                     {{$x++}}
                                 </td>
                                 <td>
-                                    <img src="{{asset('uploads/'.$item->image)}}" alt="{{$item->name}}'s image" class="img-fluid img-thumbnail" style="max-width: 150px;max-height: 80px">
+                                    <img src="{{asset('public/uploads/'.$item->image)}}" alt="{{$item->name}}'s image" class="img-fluid img-thumbnail" style="max-width: 150px;max-height: 80px">
                                 </td>
                                 <td>
                                     {{

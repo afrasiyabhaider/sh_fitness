@@ -26,6 +26,9 @@
                         Role Name
                     </th>
                     <th>
+                        Number of Permissions
+                    </th>
+                    <th>
                         Actions
                     </th>
                 </tr>
@@ -40,6 +43,11 @@
                             <td>
                                 {{
                                     $item->name
+                                }}
+                            </td>
+                            <td>
+                                {{
+                                    $item->getAllPermissions()->count()
                                 }}
                             </td>
                             <td>

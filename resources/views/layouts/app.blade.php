@@ -15,9 +15,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashboard/fontawesome/css/all.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashboard/css/login_form.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/dashboard/fontawesome/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/dashboard/css/login_form.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -77,8 +77,8 @@
         </main>
     </div>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('dashboard/fontawesome/js/all.min.js') }}" defer></script>
+    <script src="{{ asset('public/js/app.js') }}" defer></script>
+    <script src="{{ asset('public/dashboard/fontawesome/js/all.min.js') }}" defer></script>
 
 </body>
 </html>

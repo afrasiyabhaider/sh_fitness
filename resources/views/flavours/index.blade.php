@@ -68,54 +68,54 @@
                     </div>
                </form>
           @endif
-          <table class="table table-hover text-center" id="laravel_datatable">
+          <table class="table table-hover text-center" id="data_table">
                <thead>
                     <tr>
                          <th>Sr#</th>
                          <th>Title</th>
-                         {{-- <th>Action</th> --}}
+                         <th>Action</th>
                     </tr>
                </thead>
+               <tbody>
+                   @foreach ($flavours as $item)
+                       <tr>
+                           <td>
+                               {{$loop->iteration}}
+                           </td>
+                           <td>
+                               {{$item->title}}
+                           </td>
+                           <td>
+                               <div class="btn-group">
+                                   <button type="button" class="btn bg-dark-blue text-light">Actions</button>
+                                   <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+                                       <span class="sr-only">Toggle Dropdown</span>
+                                   </button>
+                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                                       <a href="{{url('flavour/'.encrypt($item->id).'/edit')}}" class="dropdown-item">
+                                           <i class="fa fa-edit"></i>
+                                           Edit 
+                                       </a>
+                                       <form action="{{action('FlavourController@destroy',$item->id)}}" method="post">
+                                           @method('DELETE')
+                                           @csrf
+                                           <button type="submit" class="dropdown-item text-danger confirmation">
+                                               <i class="fa fa-eye-slash"></i>
+                                               Disable
+                                           </button>
+                                       </form>
+                                       <a href="{{url('flavour/'.encrypt($item->id).'/delete')}}" class="dropdown-item confirmation">
+                                           <i class="fa fa-trash-alt text-danger"></i>
+                                           Delete Permanently 
+                                       </a>
+                                   </div>
+                               </div>
+                           </td>
+                       </tr>
+                   @endforeach
+               </tbody>
           </table>
      </div>
-                      {{-- <tbody>
-                          @foreach ($flavours as $item)
-                              <tr>
-                                  <td>
-                                      {{$loop->iteration}}
-                                  </td>
-                                  <td>
-                                      {{$item->title}}
-                                  </td>
-                                  <td>
-                                      <div class="btn-group">
-                                          <button type="button" class="btn bg-dark-blue text-light">Actions</button>
-                                          <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
-                                              <span class="sr-only">Toggle Dropdown</span>
-                                          </button>
-                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                                              <a href="{{url('flavour/'.encrypt($item->id).'/edit')}}" class="dropdown-item">
-                                                  <i class="fa fa-edit"></i>
-                                                  Edit 
-                                              </a>
-                                              <form action="{{action('FlavourController@destroy',$item->id)}}" method="post">
-                                                  @method('DELETE')
-                                                  @csrf
-                                                  <button type="submit" class="dropdown-item text-danger confirmation">
-                                                      <i class="fa fa-eye-slash"></i>
-                                                      Disable
-                                                  </button>
-                                              </form>
-                                              <a href="{{url('flavour/'.encrypt($item->id).'/delete')}}" class="dropdown-item confirmation">
-                                                  <i class="fa fa-trash-alt text-danger"></i>
-                                                  Delete Permanently 
-                                              </a>
-                                          </div>
-                                      </div>
-                                  </td>
-                              </tr>
-                          @endforeach
-                      </tbody> --}}
 
     {{-- Size Modal --}}
     <div class="modal fade add_flavour" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -167,19 +167,3 @@
       </div>
     </div>
 @endsection
-@push('scripts')
-     <script>
-          $(function() {
-               $('#laravel_datatable').DataTable({
-               processing: true,
-               serverSide: true,
-               ajax: '{!! url('get_flavours') !!}',
-               columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'title', name: 'title' }
-                    // {data: 'action', name: 'action', orderable: false, searchable: false}
-                    ]
-               });
-          });
-     </script>
-@endpush
