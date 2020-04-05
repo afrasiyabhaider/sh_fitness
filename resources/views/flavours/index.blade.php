@@ -71,7 +71,7 @@
           <table class="table table-hover text-center" id="laravel_datatable">
                <thead>
                     <tr>
-                         <th>Id</th>
+                         <th>Sr#</th>
                          <th>Title</th>
                          {{-- <th>Action</th> --}}
                     </tr>
@@ -177,6 +177,7 @@
                columns: [
                     { data: 'id', name: 'id' },
                     { data: 'title', name: 'title' }
+                    // {data: 'action', name: 'action', orderable: false, searchable: false}
                     ]
                });
           });
