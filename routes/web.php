@@ -134,3 +134,20 @@ Route::group(['auth'], function () {
 
     // Auth check ends here
 });
+
+
+
+
+Route::get('permission-reset', function () {
+    \Artisan::call('permission:cache-reset');
+    dd("Permission Cache Resetted");
+});
+Route::get('route-clear', function () {
+    \Artisan::call('route:clear');
+    dd("Route Cleared");
+});
+Route::get('optimize', function () {
+    \Artisan::call('optimize');
+    dd("Optimized");
+});
+
