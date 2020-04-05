@@ -4,7 +4,7 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
-                    <img src="{{asset('dashboard/images/login.jpg')}}" alt="IMG"  width="500px">
+                    <img src="{{asset('public/dashboard/images/login.jpg')}}" alt="IMG"  width="500px">
                 </div>
                 {{-- {{ route('staff.login.submit') }} --}}
                 <form class="login100-form" method="POST" action="">
